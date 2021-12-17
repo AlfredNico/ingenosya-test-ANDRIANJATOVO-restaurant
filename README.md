@@ -19,7 +19,7 @@
  - On peut ajouter le repas avec des éléments (ingrédients, emballage, couvert, serviette de table) selon le cahier de charge. L'utilisatuer peut valider le repa et passé en vante si les ingrédients sont tous complete.
  - Liste des vente pour que l'utilisateur pour 
  - Voire en détail une quantité d’éléments nécessaires pour fabriquer d'un repas, s'il y à un ingrédient pour ce repas.
- - Validation repas pour le mettre en que l'utilisatuer peut le commander.
+ - Validation repas pour le mettre en que l'utilisatuer peut le commander. On peut aussi ajouter ou modifier le prix de ce repas selon le prix dans un resataurant.
 
 ### En cours
 - liste des commande des client
