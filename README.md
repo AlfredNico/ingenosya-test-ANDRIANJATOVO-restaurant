@@ -20,13 +20,13 @@
  - Liste des vente pour que l'utilisateur pour 
  - Voire en détail la quantité d’éléments nécessaires pour fabriquer d'un repas, s'il y à un ingrédient pour ce repas.
  - Validation repas pour le mettre en que l'utilisatuer peut le commander. On peut aussi ajouter ou modifier le prix de ce repas selon le prix dans un resataurant.
-
-### En cours
-- liste des commande des client
-- Benefice d'un restaurant
+- Liste des commandes des clients
+- Benefice d'un restaurant.
+- Ajouter commande pour d'un repas (pour le client).
 
 ### Non terminer
 - export PDF
+- Ajouter nombre des client pour commande le repas
 
 # Backend 
 ### Prérequis
