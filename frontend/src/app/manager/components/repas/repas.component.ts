@@ -44,11 +44,5 @@ export class RepasComponent implements OnInit {
         data: { data: repas },
       })
       .afterClosed();
-    // .subscribe((result: any) => {
-    //   if (result === true) {
-    //     // this.trigger.next(null);
-    //   }
-    //   subscription.unsubscribe();
-    // });
   }
 }
