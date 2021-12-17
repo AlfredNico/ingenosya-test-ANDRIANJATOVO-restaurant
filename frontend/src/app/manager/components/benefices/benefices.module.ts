@@ -1,10 +1,13 @@
+import { SharedModule } from './../../../shared/shared.module';
 import { BeneficesComponent } from './benefices.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { CommandeService } from '../../services/commande.service';
 
 @NgModule({
   declarations: [BeneficesComponent],
   imports: [
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',
@@ -14,5 +17,6 @@ import { NgModule } from '@angular/core';
       },
     ]),
   ],
+  providers: [CommandeService],
 })
 export class BeneficesModule {}

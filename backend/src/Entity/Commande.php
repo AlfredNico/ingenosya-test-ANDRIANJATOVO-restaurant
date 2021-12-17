@@ -9,9 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Commande
 {
+    use Timestamps; //include timestamps
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -36,7 +36,7 @@ import { Component, OnInit } from '@angular/core';
               class="w-100 py-2 text-left nav-item"
               routerLinkActive="active"
               mat-button
-              >Gestion menu
+              >Gestion des commandes
             </a>
             <a
               routerLink="gestion-benefice"
@@ -58,14 +58,10 @@ import { Component, OnInit } from '@angular/core';
             aria-label="Example icon-button with heart icon"
           >
             <mat-icon>favorite</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            class="example-icon"
-            aria-label="Example icon-button with share icon"
-          >
-            <mat-icon>share</mat-icon>
           </button> -->
+          <button mat-icon-button routerLink="/client-space">
+            liste des ventes
+          </button>
         </mat-toolbar>
         <router-outlet></router-outlet>
       </mat-drawer-content>

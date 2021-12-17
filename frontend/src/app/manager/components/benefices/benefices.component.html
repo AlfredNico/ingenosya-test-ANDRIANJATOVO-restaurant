@@ -1,1 +1,35 @@
-<p>benefices works!</p>
+<main class="my-2 p-3 border rounded" fxLayout="column" fxLayoutAlign="start center">
+  <div class="bg-light w-100" fxLayout="column" fxLayoutAlign="center center">
+    <h2 class="text-uppercase">Gestion des benefice</h2>
+  </div>
+  <div class="bg-white p-3 w-100 border">
+      <table mat-table [dataSource]="dataSource" class="w-100" matSort>
+
+          <ng-container matColumnDef="libelle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Libelle</th>
+              <td mat-cell *matCellDef="let benefice" class="text-center">
+                {{ benefice.commande.repas.libelle }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="prix_total">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Prix</th>
+              <td mat-cell *matCellDef="let benefice;">
+                  {{ benefice.prixTotal | currency:"AR ":"symbol" }}
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Commande le</th>
+            <td mat-cell *matCellDef="let benefice;">
+                {{ benefice.createdAt | date:'dd/MM/yy à HH:mm':'fr-FR' }}
+            </td>
+        </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columns"></tr>
+          <tr mat-row *matRowDef="let row; columns: columns"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+  </div>
+</main>

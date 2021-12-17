@@ -62,6 +62,14 @@ class RepasController extends AbstractFOSRestController
     }
 
     /**
+     * @return Repas[]
+     */
+    public function getRepasValidVenteAction()
+    {
+        return $this->view($this->repasRepo->findBy(['isVente' => 1]), Response::HTTP_CREATED);
+    }
+
+    /**
      * @param Repas $repas
      */
     public function getRepaToVenteAction(Repas $repas)

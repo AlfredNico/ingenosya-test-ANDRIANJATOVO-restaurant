@@ -3,15 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\BeneficeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BeneficeRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Benefice
 {
+    use Timestamps; //include timestamps
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

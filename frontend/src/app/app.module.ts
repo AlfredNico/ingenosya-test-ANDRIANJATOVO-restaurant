@@ -1,3 +1,4 @@
+import { LayoutComponent } from './client/components/layout/layout.component';
 import { BreadcrumbComponent } from './shared/components/breadcrumb/breadcrumb.component';
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent, SidenavComponent, BreadcrumbComponent],
+  declarations: [
+    AppComponent,
+    SidenavComponent,
+    BreadcrumbComponent,
+    LayoutComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     AppRoutingModule,

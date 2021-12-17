@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <h2 mat-dialog-title>Ajouter quantité</h2>
+  <div mat-dialog-content>
+
+    <button mat-stroked-button (click)="decrement()">-</button>
+    <mat-form-field appearance="outline">
+        <input type="number" matInput formControlName="qte" readonly min="0">
+    </mat-form-field>
+    <button mat-stroked-button (click)="increment()">+</button>
+
+  </div>
+
+  <div mat-dialog-actions fxLayoutAlign="end center">
+    <button type="reset" mat-stroked-button mat-dialog-close>Annuler</button>
+    <button type="submit" mat-flat-button color="primary" (click)="save()" [disabled]="form.invalid">Enregistrer</button>
+  </div>
+</form>

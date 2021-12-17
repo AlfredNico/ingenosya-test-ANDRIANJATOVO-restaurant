@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 17 déc. 2021 à 10:00
+-- Généré le : ven. 17 déc. 2021 à 18:10
 -- Version du serveur : 10.4.20-MariaDB
 -- Version de PHP : 7.4.22
 
@@ -30,8 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `benefice` (
   `id` int(11) NOT NULL,
   `prix_total` int(11) NOT NULL,
-  `commande_id` int(11) NOT NULL
+  `commande_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `benefice`
+--
+
+INSERT INTO `benefice` (`id`, `prix_total`, `commande_id`, `created_at`, `updated_at`) VALUES
+(1, 690, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 691200, 3, '2021-12-17 19:03:12', '2021-12-17 19:03:12');
 
 -- --------------------------------------------------------
 
@@ -42,8 +52,19 @@ CREATE TABLE `benefice` (
 CREATE TABLE `commande` (
   `id` int(11) NOT NULL,
   `qte` int(11) NOT NULL,
-  `repas_id` int(11) NOT NULL
+  `repas_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id`, `qte`, `repas_id`, `created_at`, `updated_at`) VALUES
+(1, 3, 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 2, 30, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 2, 3, '2021-12-17 19:03:11', '2021-12-17 19:03:11');
 
 -- --------------------------------------------------------
 
@@ -109,7 +130,7 @@ CREATE TABLE `repas` (
 --
 
 INSERT INTO `repas` (`id`, `libelle`, `img_url`, `is_valid`, `prix_unitaire`, `created_at`, `updated_at`, `is_element`, `is_vente`) VALUES
-(3, 'Frite', '/uploads_image/2d50829e6bbd458fc45f51ec87b6b33a.jpg', 1, NULL, '2021-12-16 07:45:32', '2021-12-17 10:57:45', 1, 1),
+(3, 'Frite', '/uploads_image/2d50829e6bbd458fc45f51ec87b6b33a.jpg', 1, '345600', '2021-12-16 07:45:32', '2021-12-17 17:22:11', 1, 1),
 (4, 'Frite', '/uploads_image/ed782dc8ed965c896f6e0131fa11d6d4.jpg', 0, NULL, '2021-12-16 07:46:53', '2021-12-16 07:46:53', 0, 0),
 (5, 'df', NULL, 0, NULL, '2021-12-16 10:26:21', '2021-12-16 10:26:21', 0, 0),
 (6, 'pizza', NULL, 0, '335', '2021-12-16 16:29:53', '2021-12-16 16:29:53', 0, 0),
@@ -136,7 +157,7 @@ INSERT INTO `repas` (`id`, `libelle`, `img_url`, `is_valid`, `prix_unitaire`, `c
 (27, 'poulet', NULL, 0, '345', '2021-12-16 18:17:49', '2021-12-16 18:17:49', 0, 0),
 (28, 'cuisse de poulet', NULL, 0, '345', '2021-12-16 18:19:21', '2021-12-16 18:19:21', 0, 0),
 (29, 'Omelette', NULL, 0, '450', '2021-12-16 19:08:32', '2021-12-16 19:08:32', 0, 0),
-(30, 'halal', NULL, 1, '345', '2021-12-16 19:09:43', '2021-12-16 19:10:04', 1, 0),
+(30, 'halal', NULL, 1, '345', '2021-12-16 19:09:43', '2021-12-17 17:22:12', 1, 1),
 (31, 'Poulet sauce frite', NULL, 0, '', '2021-12-17 09:45:18', '2021-12-17 09:45:18', 0, 0);
 
 -- --------------------------------------------------------
@@ -238,13 +259,13 @@ ALTER TABLE `stocks`
 -- AUTO_INCREMENT pour la table `benefice`
 --
 ALTER TABLE `benefice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `element`

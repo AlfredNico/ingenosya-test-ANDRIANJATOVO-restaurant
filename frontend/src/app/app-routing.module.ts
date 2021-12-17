@@ -12,7 +12,7 @@ const routers: Routes = [
     loadChildren: () =>
       import('src/app/client/client.module').then((m) => m.ClientModule),
   },
-  { path: '', pathMatch: 'full', redirectTo: 'manager-space' },
+  { path: '', pathMatch: 'full', redirectTo: 'client-space' },
 ];
 
 @NgModule({

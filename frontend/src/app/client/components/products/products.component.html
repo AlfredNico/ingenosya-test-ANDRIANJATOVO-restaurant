@@ -1,0 +1,20 @@
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of products">
+        <mat-card class="mat-elevation-z4" >
+          <mat-card-header>
+            <mat-card-title>{{ product.libelle }}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image [src]="product.imgURL" width="20" height="200">
+          <mat-card-content>
+            <p>
+              {{ product['prixUnitaire'] | currency:"AR ":"symbol" }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="text-center">
+            <button color="primary" mat-raised-button (click)="openCommande(product)">COMMANDER</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    </div>
