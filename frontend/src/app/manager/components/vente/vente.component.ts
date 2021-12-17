@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { IRepas } from 'src/app/interfaces/irepas';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-vente',
@@ -12,6 +14,8 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
   styles: [],
 })
 export class VenteComponent implements OnInit {
+  private trigger = new BehaviorSubject<any>(null);
+
   public readonly columns = [
     'imgURL',
     'libelle',
@@ -30,13 +34,22 @@ export class VenteComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const result = await this.venteService.getVentes().toPromise();
-    this.dataSource.data = result;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+
+    this.trigger
+      .pipe(switchMap((result: IRepas[]) => this.venteService.getVentes()))
+      .subscribe((result) => {
+        this.dataSource.data = result;
+      });
   }
 
   validate(vente: IRepas) {
-    this.snackbar.info(`${vente.libelle} est en vente !`);
+    this.venteService.ajouteVente(vente.id).subscribe((result) => {
+      if (result && result.message) {
+        this.trigger.next(null);
+        this.snackbar.info(result.message);
+      }
+    });
   }
 }

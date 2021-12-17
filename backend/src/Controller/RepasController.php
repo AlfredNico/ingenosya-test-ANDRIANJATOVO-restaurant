@@ -56,30 +56,31 @@ class RepasController extends AbstractFOSRestController
      */
     public function getRepasIngredientAction(string $id)
     {
-        // if (is_null($repas)) {
-        //     return $this->view(['message' => "repas non trouvé."], Response::HTTP_NOT_FOUND);
-        // }
         $element = $this->elementRepo->findIngrediant($id);
-        // dd($element);
-        // if (!empty(trim($libelle))) {
-
-        //     $repas = new Repas();
-        //     $repas->setLibelle($libelle);
-        //     $repas->setPrixUnitaire($prix_unitaire);
-
-        //     if ($file) {
-        //         $fileName = md5(uniqid()) . '.' . $file->guessClientExtension();
-        //         $file->move(
-        //             $this->getParameter('uploads_directory'),
-        //             $fileName
-        //         );
-        //         $repas->setImgURL("/uploads_image/" . $fileName);
-        //     }
-
-        //     $this->em->persist($repas);
-        //     $this->em->flush();
 
         return $this->view($element, Response::HTTP_CREATED);
+    }
+
+    /**
+     * @param Repas $repas
+     */
+    public function getRepaToVenteAction(Repas $repas)
+    {
+        if (is_null($repas)) {
+            return $this->view(['message' => "repas non trouvé."], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($repas->getIsVente() === true) {
+            $repas->setIsVente(!$repas->getIsVente());
+            $this->em->persist($repas);
+            $this->em->flush();
+            return $this->view(['message' => "repas supprimer dans le vente."], Response::HTTP_CREATED);
+        } else {
+            $repas->setIsVente(!$repas->getIsVente());
+            $this->em->persist($repas);
+            $this->em->flush();
+            return $this->view(['message' => "repas ajouter en vente."], Response::HTTP_CREATED);
+        }
     }
 
     /**

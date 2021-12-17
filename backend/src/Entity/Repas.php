@@ -58,6 +58,11 @@ class Repas
      */
     private $commandes;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVente = false;
+
     public function __construct()
     {
         $this->elements = new ArrayCollection();
@@ -185,6 +190,18 @@ class Repas
                 $commande->setRepas(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsVente(): ?bool
+    {
+        return $this->isVente;
+    }
+
+    public function setIsVente(bool $isVente): self
+    {
+        $this->isVente = $isVente;
 
         return $this;
     }

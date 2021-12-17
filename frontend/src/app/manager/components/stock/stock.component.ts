@@ -38,11 +38,7 @@ export class StockComponent implements OnInit, AfterViewInit, OnDestroy {
     private dialog: MatDialog
   ) {}
 
-  async ngOnInit() {
-    // const result = await this.stockService.getStocks().toPromise();
-    // console.log(result);
-    // this.dataSource.data = result;
-  }
+  async ngOnInit() {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

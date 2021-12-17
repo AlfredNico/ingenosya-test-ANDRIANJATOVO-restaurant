@@ -12,4 +12,10 @@ export class VenteService {
   getVentes() {
     return this._http.get<IRepas[]>(`${environment.base_url}/repas/vente`);
   }
+
+  ajouteVente(id: any) {
+    return this._http.get<{ message: string }>(
+      `${environment.base_url}/repas/${id}/to/vente`
+    );
+  }
 }

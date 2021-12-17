@@ -41,9 +41,12 @@
           <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef>Action</th>
               <td mat-cell *matCellDef="let repas;">
-                  <button mat-raised-button (click)="validate(repas)" color="primary">
-                      valider
+                  <button *ngIf="!repas.isVente" mat-raised-button (click)="validate(repas)" color="primary">
+                      Ajouter au vente
                   </button>
+                  <button *ngIf="repas.isVente" mat-raised-button (click)="validate(repas)" color="warn">
+                    Supprimer au vente
+                </button>
               </td>
           </ng-container>
 
