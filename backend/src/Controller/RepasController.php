@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Element;
 use App\Entity\Repas;
 use App\Entity\Stock;
+use App\Repository\ElementRepository;
 use App\Repository\RepasRepository;
 use App\Repository\StockRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,12 +21,14 @@ class RepasController extends AbstractFOSRestController
 
     private $repasRepo;
     private $stockRepo;
+    private $elementRepo;
     private $em;
 
-    public function __construct(RepasRepository $repasRepo, StockRepository $stockRepo, EntityManagerInterface $em)
+    public function __construct(RepasRepository $repasRepo, StockRepository $stockRepo, ElementRepository $elementRepo, EntityManagerInterface $em)
     {
         $this->repasRepo = $repasRepo;
         $this->stockRepo = $stockRepo;
+        $this->elementRepo = $elementRepo;
         $this->em = $em;
     }
     /**
@@ -46,6 +49,37 @@ class RepasController extends AbstractFOSRestController
     public function getRepasVenteAction()
     {
         return $this->view($this->repasRepo->getVenteProduit(), Response::HTTP_OK);
+    }
+
+    /**
+     * @param string $id
+     */
+    public function getRepasIngredientAction(string $id)
+    {
+        // if (is_null($repas)) {
+        //     return $this->view(['message' => "repas non trouvé."], Response::HTTP_NOT_FOUND);
+        // }
+        $element = $this->elementRepo->findIngrediant($id);
+        // dd($element);
+        // if (!empty(trim($libelle))) {
+
+        //     $repas = new Repas();
+        //     $repas->setLibelle($libelle);
+        //     $repas->setPrixUnitaire($prix_unitaire);
+
+        //     if ($file) {
+        //         $fileName = md5(uniqid()) . '.' . $file->guessClientExtension();
+        //         $file->move(
+        //             $this->getParameter('uploads_directory'),
+        //             $fileName
+        //         );
+        //         $repas->setImgURL("/uploads_image/" . $fileName);
+        //     }
+
+        //     $this->em->persist($repas);
+        //     $this->em->flush();
+
+        return $this->view($element, Response::HTTP_CREATED);
     }
 
     /**
@@ -94,7 +128,7 @@ class RepasController extends AbstractFOSRestController
         if (is_null($repas)) {
             return $this->view(['message' => "repas non trouvé."], Response::HTTP_NOT_FOUND);
         }
-        
+
         // $id = ($paramFetcher->get('id'));
         $inStock = ($paramFetcher->get('inStock'));
         $noStock = ($paramFetcher->get('noStock'));

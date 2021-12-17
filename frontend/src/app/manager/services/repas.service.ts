@@ -13,6 +13,12 @@ export class RepasService {
     return this._http.get<IRepas[]>(`${environment.base_url}/repas`);
   }
 
+  getIngredient(id: any) {
+    return this._http.get<any[]>(
+      `${environment.base_url}/repas/${id}/ingredient`
+    );
+  }
+
   postRepa(data: any, prix_unitaire: any, file: File) {
     let formData = new FormData();
     formData.append('file', file);

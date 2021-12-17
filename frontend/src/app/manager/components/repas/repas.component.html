@@ -44,7 +44,7 @@
                   <!-- <button mat-icon-button (click)="update(repas)">
                       <mat-icon matTooltip="mise à jour" matTooltipPosition="above">edit</mat-icon>
                   </button> -->
-                  <button mat-icon-button (click)="openRecette(repas)">
+                  <button mat-icon-button (click)="openRecette(repas)" *ngIf="repas.elements.length > 0">
                     <mat-icon matTooltip="voire recette" matTooltipPosition="above">remove_red_eye</mat-icon>
                 </button>
               </td>

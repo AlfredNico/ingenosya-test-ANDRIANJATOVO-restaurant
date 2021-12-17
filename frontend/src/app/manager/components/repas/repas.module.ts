@@ -1,4 +1,3 @@
-import { RepasService } from './../../../shared/services/repas.service';
 import { SharedModule } from './../../../shared/shared.module';
 import { RepasComponent } from 'src/app/manager/components/repas/repas.component';
 import { RouterModule } from '@angular/router';
@@ -8,6 +7,7 @@ import { AddElementComponent } from './add-element/add-element.component';
 import { AddRepasComponent } from './add-repas/add-repas.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { RecetteDialogComponent } from './recette-dialog/recette-dialog.component';
+import { RepasService } from '../../services/repas.service';
 
 @NgModule({
   declarations: [

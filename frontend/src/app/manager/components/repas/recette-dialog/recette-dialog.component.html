@@ -1,11 +1,29 @@
 <div>
-  <h2 mat-dialog-title>ingrédients nécessaires pour fabriquer {{ data.data.libelle }}</h2>
+  <h2 mat-dialog-title>Ingrédients nécessaires pour fabriquer {{ data.data.libelle }}</h2>
 
   <div mat-dialog-content>
+    <table mat-table [dataSource]="dataSource" class="w-100">
 
+      <ng-container matColumnDef="ingrediant">
+        <th mat-header-cell *matHeaderCellDef>Ingrédients</th>
+        <td mat-cell *matCellDef="let element;">
+          {{ element.stokes.libelle }}
+        </td>
+    </ng-container>
+
+      <ng-container matColumnDef="qte">
+          <th mat-header-cell *matHeaderCellDef>Quantité</th>
+          <td mat-cell *matCellDef="let element;">
+              {{ element.qte }} {{ element.stokes.typeQte }}
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
 
   </div>
-  <div mat-dialog-actions fxLayoutAlign="end center">
+  <div mat-dialog-actions fxLayoutAlign="center center">
     <button type="reset" mat-stroked-button mat-dialog-close>Fermer</button>
   </div>
 </div>

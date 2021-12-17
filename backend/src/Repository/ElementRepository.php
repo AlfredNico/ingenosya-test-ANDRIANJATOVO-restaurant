@@ -19,32 +19,12 @@ class ElementRepository extends ServiceEntityRepository
         parent::__construct($registry, Element::class);
     }
 
-    // /**
-    //  * @return Element[] Returns an array of Element objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findIngrediant(string $repa_id)
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('el')
+            ->where('el.repos = :repa_id')
+            ->setParameter('repa_id', $repa_id)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Element
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
