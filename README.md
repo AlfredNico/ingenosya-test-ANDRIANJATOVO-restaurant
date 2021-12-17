@@ -25,8 +25,8 @@
 - Ajouter commande pour d'un repas (pour le client).
 
 ### Non terminer
-- export PDF
-- Ajouter nombre des client pour commande le repas
+- Export formule des repas et la liste des menus disponibles du restaurant en PDF.
+- Ajouter nombre des clients qui veut le repas aves emballage, serviette de table, couvert ou pas.
 
 # Backend 
 ### Prérequis
