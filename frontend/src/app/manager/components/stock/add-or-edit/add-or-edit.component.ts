@@ -36,16 +36,35 @@ export class AddOrEditComponent implements OnInit {
       else if (value === 'b') this.unite = 'Boite';
       else this.unite = 'Autre';
     });
+
+    if (this.data.data) {
+      this.form.patchValue({
+        libelle: this.data.data.libelle,
+        type_qte: this.data.data.typeQte,
+        qte: this.data.data.qte,
+      });
+    }
   }
 
   save() {
     if (this.form.valid) {
-      this.stockService.postStock(this.form.value).subscribe((result) => {
-        if (result && result.message) {
-          this.snackbar.sucess(result.message);
-          this.dialogRef.close(true);
-        }
-      });
+      if (this.data.action === 'add') {
+        this.stockService.postStock(this.form.value).subscribe((result) => {
+          if (result && result.message) {
+            this.snackbar.sucess(result.message);
+            this.dialogRef.close(true);
+          }
+        });
+      } else {
+        this.stockService
+          .updateStock(this.data.data.id, this.form.value)
+          .subscribe((result) => {
+            if (result && result.message) {
+              this.snackbar.sucess(result.message);
+              this.dialogRef.close(true);
+            }
+          });
+      }
     }
   }
 }

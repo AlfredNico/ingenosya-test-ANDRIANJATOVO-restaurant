@@ -52,7 +52,7 @@ import { Component, OnInit } from '@angular/core';
         <mat-toolbar>
           <app-breadcrumb></app-breadcrumb>
           <span style="flex: 1 1 auto;"></span>
-          <button
+          <!-- <button
             mat-icon-button
             class="example-icon favorite-icon"
             aria-label="Example icon-button with heart icon"
@@ -65,7 +65,7 @@ import { Component, OnInit } from '@angular/core';
             aria-label="Example icon-button with share icon"
           >
             <mat-icon>share</mat-icon>
-          </button>
+          </button> -->
         </mat-toolbar>
         <router-outlet></router-outlet>
       </mat-drawer-content>

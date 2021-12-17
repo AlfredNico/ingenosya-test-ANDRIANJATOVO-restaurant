@@ -89,4 +89,34 @@ class StockController extends AbstractFOSRestController
         }
         return $this->view(['message' => "erreur creattion stock."], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    /**
+     * @Rest\RequestParam(name="libelle", description="libelle stock", nullable=false)
+     * @Rest\RequestParam(name="type_qte", description="type quantité", nullable=false)
+     * @Rest\RequestParam(name="qte", description="quanité stock ", nullable=false)
+     * @param ParamFetcher $paramFetcher
+     * @param Stock $stock
+     */
+    public function putStocksAction(Stock $stock, ParamFetcher $paramFetcher)
+    {
+        if (is_null($stock)) {
+            return $this->view(['message' => "stock non trouvé."], Response::HTTP_NOT_FOUND);
+        }
+        $libelle = ($paramFetcher->get('libelle'));
+        $type_qte = ($paramFetcher->get('type_qte'));
+        $qte = ($paramFetcher->get('qte'));
+
+        if (!empty(trim($libelle)) && !is_null($type_qte) && !is_null($qte)) {
+
+            $stock->setLibelle($libelle);
+            $stock->setTypeQte($type_qte);
+            $stock->setQte($qte);
+
+            $this->em->persist($stock);
+            $this->em->flush();
+
+            return $this->view(['message' => "stock a jour avec succés."], Response::HTTP_CREATED);
+        }
+        return $this->view(['message' => "erreur a jour stock."], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 }

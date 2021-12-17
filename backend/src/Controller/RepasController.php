@@ -91,6 +91,10 @@ class RepasController extends AbstractFOSRestController
      */
     public function postRepasElementAction(Repas $repas, ParamFetcher $paramFetcher)
     {
+        if (is_null($repas)) {
+            return $this->view(['message' => "repas non trouvé."], Response::HTTP_NOT_FOUND);
+        }
+        
         // $id = ($paramFetcher->get('id'));
         $inStock = ($paramFetcher->get('inStock'));
         $noStock = ($paramFetcher->get('noStock'));
@@ -135,9 +139,6 @@ class RepasController extends AbstractFOSRestController
 
         $this->em->flush();
 
-        if (is_null($repas)) {
-            return $this->view(['message' => "repas non trouvé."], Response::HTTP_NOT_FOUND);
-        }
         return $this->view(['message' => "Repas ajout avec succés"], Response::HTTP_OK);
     }
 }
