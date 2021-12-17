@@ -18,4 +18,11 @@ export class VenteService {
       `${environment.base_url}/repas/${id}/to/vente`
     );
   }
+
+  addPrice(id: any, data: any) {
+    return this._http.post<{ message: string }>(
+      `${environment.base_url}/repas/${id}/adds/prices`,
+      data
+    );
+  }
 }

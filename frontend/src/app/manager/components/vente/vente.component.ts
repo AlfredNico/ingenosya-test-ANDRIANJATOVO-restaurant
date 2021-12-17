@@ -1,3 +1,4 @@
+import { AddPriceDialogComponent } from './add-price-dialog/add-price-dialog.component';
 import { VenteService } from './../../services/vente.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
@@ -7,6 +8,7 @@ import { IRepas } from 'src/app/interfaces/irepas';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-vente',
@@ -30,7 +32,8 @@ export class VenteComponent implements OnInit {
 
   constructor(
     private venteService: VenteService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private dialog: MatDialog
   ) {}
 
   async ngOnInit() {
@@ -51,5 +54,19 @@ export class VenteComponent implements OnInit {
         this.snackbar.info(result.message);
       }
     });
+  }
+
+  addPrice(repas: IRepas) {
+    const subscription = this.dialog
+      .open(AddPriceDialogComponent, {
+        data: { data: repas },
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result === true) {
+          this.trigger.next(null);
+        }
+        subscription.unsubscribe();
+      });
   }
 }

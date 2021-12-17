@@ -82,6 +82,26 @@ class RepasController extends AbstractFOSRestController
             return $this->view(['message' => "repas ajouter en vente."], Response::HTTP_CREATED);
         }
     }
+    /**
+     * @Rest\RequestParam(name="prix_unitaire", description="prix repas", nullable=false)
+     * @param ParamFetcher $paramFetcher
+     * @param Repas $repas
+     */
+    public function postRepaAddPriceAction(Repas $repas, ParamFetcher $paramFetcher)
+    {
+        if (is_null($repas)) {
+            return $this->view(['message' => "repas non trouvé."], Response::HTTP_NOT_FOUND);
+        }
+        $prix_unitaire = ($paramFetcher->get('prix_unitaire'));
+
+        if (!empty(trim($prix_unitaire))) {
+            $repas->setPrixUnitaire($prix_unitaire);
+            $this->em->persist($repas);
+            $this->em->flush();
+            return $this->view(['message' => "Prix repas ajouter avec succées."], Response::HTTP_CREATED);
+        }
+        return $this->view(['message' => "Errer."], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 
     /**
      * @Rest\RequestParam(name="libelle", description="libelle repas", nullable=false)

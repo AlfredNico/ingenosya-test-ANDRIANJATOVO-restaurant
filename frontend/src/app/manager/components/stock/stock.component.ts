@@ -66,8 +66,6 @@ export class StockComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   addOrEdit(stock?: IStock) {
-    console.log(stock);
-
     const subscription = this.dialog
       .open(AddOrEditComponent, {
         data: { action: stock ? 'edit' : 'add', data: stock },
