@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 17 déc. 2021 à 08:09
+-- Généré le : ven. 17 déc. 2021 à 08:49
 -- Version du serveur : 10.4.20-MariaDB
 -- Version de PHP : 7.4.22
 
@@ -135,7 +135,8 @@ INSERT INTO `repas` (`id`, `libelle`, `img_url`, `is_valid`, `prix_unitaire`, `c
 (27, 'poulet', NULL, 0, '345', '2021-12-16 18:17:49', '2021-12-16 18:17:49', 0),
 (28, 'cuisse de poulet', NULL, 0, '345', '2021-12-16 18:19:21', '2021-12-16 18:19:21', 0),
 (29, 'Omelette', NULL, 0, '450', '2021-12-16 19:08:32', '2021-12-16 19:08:32', 0),
-(30, 'halal', NULL, 1, '345', '2021-12-16 19:09:43', '2021-12-16 19:10:04', 1);
+(30, 'halal', NULL, 1, '345', '2021-12-16 19:09:43', '2021-12-16 19:10:04', 1),
+(31, 'Poulet sauce frite', NULL, 0, '', '2021-12-17 09:45:18', '2021-12-17 09:45:18', 0);
 
 -- --------------------------------------------------------
 
@@ -172,10 +173,10 @@ CREATE TABLE `stocks` (
 
 INSERT INTO `stocks` (`id`, `libelle`, `type_qte`, `qte`, `created_at`, `updated_at`, `is_available`) VALUES
 (1, 'Viande', 'g', 230, '2021-12-16 12:08:12', '2021-12-16 19:10:04', 1),
-(2, 'Pomme de terre', 'g', 3, '2021-12-16 12:08:15', '2021-12-16 12:08:15', 0),
-(3, 'Frite', 'b', 1, '2021-12-16 12:10:18', '2021-12-16 18:20:06', 1),
-(4, 'mais bleu', 'g', 23, '2021-12-16 17:54:08', '2021-12-17 08:31:14', 0),
-(5, 'fraise', 'p', 4, '2021-12-16 18:20:05', '2021-12-16 18:20:05', 0);
+(2, 'Pomme de terre', 'g', 4590, '2021-12-16 12:08:15', '2021-12-16 12:08:15', 0),
+(3, 'Frite', 'b', 55040, '2021-12-16 12:10:18', '2021-12-17 09:47:42', 1),
+(4, 'mais bleu', 'g', 23900, '2021-12-16 17:54:08', '2021-12-17 08:31:14', 0),
+(5, 'fraise', 'p', 45, '2021-12-16 18:20:05', '2021-12-16 18:20:05', 0);
 
 --
 -- Index pour les tables déchargées
@@ -260,7 +261,7 @@ ALTER TABLE `refresh_tokens`
 -- AUTO_INCREMENT pour la table `repas`
 --
 ALTER TABLE `repas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `stock`
