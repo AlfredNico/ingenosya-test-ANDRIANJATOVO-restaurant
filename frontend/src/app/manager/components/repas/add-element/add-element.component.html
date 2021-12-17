@@ -1,0 +1,126 @@
+<div fxLayout="row" fxLayoutAlign="space-evenly center" class="w-100">
+<div class="w-50">
+<h2>Stock disponible</h2>
+<span>Vous pouver rechercher l' ingrédient pour ce repas et cliquez pour ajouter, <br />
+  vous pouvez l' ajouter au stock non disponible s'il n'est plus d'ingrédient dans ce stock</span>
+<mat-form-field class="w-100" appearance="fill">
+  <mat-label>Number</mat-label>
+  <input type="text"
+         placeholder="Recherche dans un stock"
+         matInput
+         [formControl]="stockFilter"
+         [matAutocomplete]="auto">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option (click)="addElement(stock)" *ngFor="let stock of filteredOptions | async" [value]="stock.libelle">
+      {{stock.libelle}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+<div *ngIf="elements.length > 0" class="w-100">
+  <div [formGroup]="formStock">
+    <ng-containe formArrayName="stockInput">
+          <div [formGroupName]="i" *ngFor="let stock of stockInput.controls; let i = index" fxLayout="row" fxLayoutAlign="space-between center">
+              <mat-form-field appearance="outline" class="w-25">
+                <mat-label>Libelle </mat-label>
+                <input matInput formControlName="libelle" readonly [attr.disabled]='true'>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-25">
+                <mat-label>Type quantité</mat-label>
+                <mat-select formControlName="type_qte">
+                  <mat-option *ngFor="let type of types, let index = index" [value]="type.id">
+                      <span> {{ type.label }}  </span>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-25">
+              <mat-label>Quantité</mat-label>
+              <input type="number" matInput formControlName="qte" [max]="elements[i].qte">
+              <span matSuffix>{{unite}}</span>
+            </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-25">
+                <mat-label>Prix unitaire</mat-label>
+                <input type="number" matInput formControlName="prix_unitaire">
+                <span matSuffix>Ariary</span>
+              </mat-form-field>
+
+              <!-- <button mat-icon-button  color="warn" (click)="removeElement(i)">
+                <mat-icon matTooltip="Supprimer" matTooltipPosition="above">delete</mat-icon>
+              </button> -->
+            </div>
+    </ng-containe>
+  </div>
+</div>
+
+
+</div>
+<div class="w-50">
+  <h2>Stock non disponible</h2>
+  <form [formGroup]="formNoStock" class="w-100" fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field appearance="outline" class="w-50">
+          <mat-label>Libelle</mat-label>
+          <input matInput formControlName="libelle">
+          <mat-error *ngIf="formNoStock.get('libelle')?.errors?.required && formNoStock.get('libelle')?.touched">
+            Libelle requis
+          </mat-error>
+        </mat-form-field>
+          <mat-form-field appearance="outline" class="w-25">
+            <mat-label>Type quantité</mat-label>
+            <mat-select formControlName="type_qte">
+              <mat-option *ngFor="let type of types, let index = index" [value]="type.id">
+                  <span> {{ type.label }}  </span>
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formNoStock.get('type_qte')?.errors?.required"> Type quantité requis </mat-error>
+          </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-25">
+        <mat-label>Quantité</mat-label>
+        <input type="number" matInput formControlName="qte">
+        <span matSuffix>{{unite}}</span>
+        <mat-error *ngIf="formNoStock.get('qte')?.errors?.required && formNoStock.get('qte')?.touched">
+          Quantité requis
+        </mat-error>
+      </mat-form-field>
+      <button type="submit" mat-flat-button color="primary" (click)="saveNoDispo()">Ajouter</button>
+  </form>
+
+  <table *ngIf="noStock.length > 0" mat-table [dataSource]="noStock" class="w-100" matSort>
+    <ng-container matColumnDef="libelle" class="w-50">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Libelle</th>
+        <td mat-cell *matCellDef="let noStock" class="text-center">
+          {{ noStock.libelle }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="qte" class="w-25">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantité</th>
+        <td mat-cell *matCellDef="let noStock;">
+            {{ noStock.qte }} {{ noStock.type_qte }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let noStock;">
+          <button mat-icon-button  color="warn" (click)="removeNoStock(noStock)">
+            <mat-icon matTooltip="Supprimer" matTooltipPosition="above">delete</mat-icon>
+        </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="noStockColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: noStockColumns"></tr>
+</table>
+</div>
+</div>
+
+
+<div fxLayout="row" fxLayoutAlign="end center" >
+  <button (click)="saveRepa()" mat-raised-button type="submit" class="submit" color="primary">
+    Valider ce repa
+  </button>
+</div>

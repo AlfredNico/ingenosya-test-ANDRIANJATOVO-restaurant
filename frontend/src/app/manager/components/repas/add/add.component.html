@@ -1,0 +1,25 @@
+<mat-horizontal-stepper style="min-height: calc(100% - 5rem);" [linear]="true" #stepper>
+    <mat-step label="Ajouter repas" #form completed="false" editable="false" >
+        <div class="min-height">
+            <div id="clipper" class="w-100 py-2">
+                <app-add-repas (nextAddElement)="nextAddElement($event)"></app-add-repas>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step label="Ajouter des éléments" completed="false" editable="false">
+        <div class="min-height">
+            <div id="clipper" class="w-100 py-2">
+                <app-add-element [repas]="repas"></app-add-element>
+            </div>
+        </div>
+    </mat-step>
+
+    <!-- <mat-step label="Finalisation" completed="false" editable="false">
+        <div class="min-height">
+            <div id="clipper" class="w-100 py-2">
+                <app-finalisation [summary]="summary"></app-finalisation>
+                <h1>OK</h1>
+            </div>
+        </div>
+    </mat-step> -->
+</mat-horizontal-stepper>

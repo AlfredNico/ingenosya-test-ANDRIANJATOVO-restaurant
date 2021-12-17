@@ -1,0 +1,39 @@
+<form [formGroup]="form">
+  <h2 mat-dialog-title *ngIf="data.action === 'add'">Ajout stock</h2>
+  <h2 mat-dialog-title *ngIf="data.action === 'edit'">Modification stock</h2>
+  <div mat-dialog-content>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Libelle</mat-label>
+      <input matInput formControlName="libelle">
+      <mat-error *ngIf="form.get('libelle')?.errors?.required && form.get('libelle')?.touched">
+        Libelle requis
+      </mat-error>
+    </mat-form-field>
+    <div class="w-100" fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field appearance="outline">
+        <mat-label>Type quantité</mat-label>
+        <mat-select formControlName="type_qte">
+          <mat-option *ngFor="let type of types, let index = index" [value]="type.id">
+              <span> {{ type.label }}  </span>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('type_qte')?.errors?.required"> Type quantité requis </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Quantité</mat-label>
+        <input type="number" matInput formControlName="qte">
+        <span matSuffix>{{unite}}</span>
+        <mat-error *ngIf="form.get('qte')?.errors?.required && form.get('qte')?.touched">
+          Quantité requis
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+  </div>
+  <div mat-dialog-actions fxLayoutAlign="end center">
+    <button type="reset" mat-stroked-button mat-dialog-close>Annuler</button>
+    <button type="submit" mat-flat-button color="primary" (click)="save()" [disabled]="form.invalid">Enregistrer</button>
+  </div>
+</form>

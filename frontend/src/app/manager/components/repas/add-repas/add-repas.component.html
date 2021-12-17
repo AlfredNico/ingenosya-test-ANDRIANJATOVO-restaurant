@@ -1,0 +1,31 @@
+
+  <div class="container" ngClass.gt-sm="min-height-padding">
+    <form class="ml-md-auto" fxLayout="column" fxLayoutAlign="center end" autocomplete="off" [formGroup]="form"
+      ngStyle.lt-md="width: 100%" ngStyle.gt-sm="width: 100%" (ngSubmit)="submit()" #formulaire>
+      <div class="mb-1 w-100">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img [src]="url" height="100" width="100" class="rounded-circle">
+          <button mat-stroked-button (click)="file.click()" class="my-1" type="button">
+            Remplacer
+          </button>
+          <input type="file" #file hidden accept=".png, .jpg, .jpeg" (change)="fileChange($event.target)">
+          <span *ngIf="!valueChanged"> {{ label }} </span>
+        </div>
+
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Libelle </mat-label>
+          <input type="text" matInput formControlName="libelle" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Prix unitaire </mat-label>
+          <input type="number" matInput formControlName="prix_unitaire" />
+          <span matSuffix></span>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit" class="submit" color="primary">
+          Ajouter des éléments
+      </button>
+    </form>
+  </div>
+
