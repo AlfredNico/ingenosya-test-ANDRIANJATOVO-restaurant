@@ -1,4 +1,4 @@
-import { IStock } from '../../interfaces/istock';
+import { IStock } from './../../interfaces/istock';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';

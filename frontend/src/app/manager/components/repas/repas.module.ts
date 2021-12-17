@@ -1,5 +1,5 @@
-import { RepasService } from '../../../shared/services/repas.service';
-import { SharedModule } from '../../../shared/shared.module';
+import { RepasService } from './../../../shared/services/repas.service';
+import { SharedModule } from './../../../shared/shared.module';
 import { RepasComponent } from 'src/app/manager/components/repas/repas.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';

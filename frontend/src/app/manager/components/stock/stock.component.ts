@@ -1,6 +1,6 @@
 import { AddOrEditComponent } from './add-or-edit/add-or-edit.component';
-import { StockService } from '../../services/stock.service';
-import { IStock, sortTypes } from '../../../interfaces/istock';
+import { StockService } from './../../services/stock.service';
+import { IStock, sortTypes } from './../../../interfaces/istock';
 import {
   AfterViewInit,
   Component,

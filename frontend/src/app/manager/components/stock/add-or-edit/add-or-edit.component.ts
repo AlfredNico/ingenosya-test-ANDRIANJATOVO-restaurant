@@ -1,4 +1,4 @@
-import { StockService } from '../../../services/stock.service';
+import { StockService } from './../../../services/stock.service';
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';

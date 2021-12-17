@@ -1,8 +1,8 @@
 import { RepasService } from 'src/app/manager/services/repas.service';
-import { SnackbarService } from '../../../../services/snackbar.service';
-import { IRepas } from '../../../../interfaces/irepas';
-import { StockService } from '../../../services/stock.service';
-import { IStock } from '../../../../interfaces/istock';
+import { SnackbarService } from './../../../../services/snackbar.service';
+import { IRepas } from './../../../../interfaces/irepas';
+import { StockService } from './../../../services/stock.service';
+import { IStock } from './../../../../interfaces/istock';
 import {
   AfterViewInit,
   Component,

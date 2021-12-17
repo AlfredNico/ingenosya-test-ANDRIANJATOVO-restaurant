@@ -1,5 +1,5 @@
-import { StockService } from '../../services/stock.service';
-import { SharedModule } from '../../../shared/shared.module';
+import { StockService } from './../../services/stock.service';
+import { SharedModule } from './../../../shared/shared.module';
 import { StockComponent } from 'src/app/manager/components/stock/stock.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';

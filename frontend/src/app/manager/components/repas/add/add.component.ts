@@ -1,4 +1,4 @@
-import { IRepas } from '../../../../interfaces/irepas';
+import { IRepas } from './../../../../interfaces/irepas';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatHorizontalStepper } from '@angular/material/stepper';
 
