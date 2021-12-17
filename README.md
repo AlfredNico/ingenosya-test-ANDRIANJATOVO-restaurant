@@ -9,7 +9,7 @@
 - **Angular CLI** installé de manière globale : `npm install -g @angular/cli`
 
 ### Clonage du repository
-- `git clone --single-branch --branch master https://github.com/AlfredNico/ingenosya-test-ANDRIANJATOVO-restaurant.git`
+- `git clone --single-branch --branch master https://github.com/AlfredNico/ingenosya-test-ANDRIANJATOVO-restaurant..git`
 
 
 ## Fonctionnalités
