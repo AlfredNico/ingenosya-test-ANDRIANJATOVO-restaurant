@@ -12,7 +12,7 @@
 - `git clone --single-branch --branch master https://github.com/AlfredNico/ingenosya-test-ANDRIANJATOVO-restaurant.git`
 
 
-## Fonctionnalité
+## Fonctionnalités
 
 ### Terminer
  - Ajouter et listes tous les stock disponible ou pas dans un resataurant selon so menu. L'utilisatuer peut filter aussi les stock disponibles ou non disponibles.
