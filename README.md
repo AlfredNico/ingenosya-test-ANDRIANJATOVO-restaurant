@@ -18,9 +18,9 @@
  - Ajouter et listes tous les stock disponible ou pas dans un resataurant selon so menu. L'utilisatuer peut filter aussi les stock disponibles ou non disponibles.
  - On peut ajouter le repas avec des éléments (ingrédients, emballage, couvert, serviette de table) selon le cahier de charge. L'utilisatuer peut valider le repa et passé en vante si les ingrédients sont tous complete.
  - Liste des vente pour que l'utilisateur pour 
+ - Voire une quantité d’éléments nécessaires pour fabriquer d'un repas, s'il y à un ingrédient pour ce repas.
 
 ### En cours
-- ajouter une popup pour que l'utilisatuer peut voir la quantité d’éléments nécessaires pour fabriquer d'un repas
 - Validation vente pour mettre ce repas en public pour que l'utilisatuer peur le commander
 
 ### Non terminer
